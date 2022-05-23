@@ -1,14 +1,60 @@
 import React, { useContext } from 'react';
-import { View, Text, Button } from 'react-native';
-import { AuthContext } from '../../contexts/AuthContext';
+import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 
 export default function Dashboard() {
-  const { signOut } = useContext(AuthContext);
 
   return (
-    <View>
-      <Text>Tela dashboard</Text>
-      <Button title="Sair" onPress={signOut} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Novo pedido</Text>
+      <TextInput
+        placeholder="Número da mesa"
+        placeholderTextColor="#f0f0f0"
+        style={styles.input}
+        keyboardType="numeric"
+      />
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Abrir mesa</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 15,
+    backgroundColor: '#1d1d2e',
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 24,
+  },
+  input: {
+    width: '90%',
+    height: 60,
+    backgroundColor: '#1d1d26',
+    borderRadius: 4,
+    paddingHorizontal: 8,
+    textAlign: 'center',
+    fontSize: 22,
+    color: "#fff",
+  },
+  button: {
+    width: '90%',
+    height: 40,
+    backgroundColor: '#3fffa3',
+    borderRadius: 4,
+    marginVertical: 12,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontSize: 18,
+    color: '#101026',
+    fontWeight: 'bold',
+  },
+});
